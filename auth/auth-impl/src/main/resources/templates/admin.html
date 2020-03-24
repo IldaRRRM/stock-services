@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all users</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .users, .users td {
+            border: 1px solid lightgray;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+    <h1>Users</h1>
+    <a href="new">Add a new User</a>
+    <table border="1" class="users">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>username</th>
+            <th>enabled</th>
+            <th>role</th>
+            <th>permission</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}">ID</td>
+            <td th:text="${user.getUsername()}">username</td>
+            <td th:text="${user.isEnabled()}">enabled</td>
+            <td th:text="${user.getRoles().get(0).getName()}">role</td>
+            <td th:text="${user.getRoles().get(0).getPermissions().get(0).getPermission()}">permission</td>
+            <td>
+                <a th:href="@{'edit/' + ${user.id}}">Edit</a>
+                <a th:href="@{'delete/' + ${user.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
