@@ -1,37 +1,32 @@
 package ru.pet.stockservices.controller;
 
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.pet.stockservices.dto.PermissionDto;
-import ru.pet.stockservices.dto.RoleDto;
 import ru.pet.stockservices.dto.UserInfoDto;
+
+import java.util.List;
 
 @RequestMapping(path = "/users/")
 public interface UserAdminController {
 
-    @GetMapping("new")
-    String showCreateUserPage(Model model);
-
     @PostMapping(value = "create")
-    String createUser(@ModelAttribute("user") UserInfoDto userInfoDto, @ModelAttribute("role") RoleDto roleDto, @ModelAttribute("permission") PermissionDto permissionDto);
+    ResponseEntity<UserInfoDto> createUser(@RequestBody UserInfoDto userInfoDto);
 
     @GetMapping(value = "{id}")
-    String findUser(@PathVariable("id") Long id, Model model);
+    ResponseEntity<UserInfoDto> findUser(@PathVariable("id") Long id);
 
-    @GetMapping(value = "edit/{id}")
-    String showUpdateUserPage(@PathVariable("id") Long id, Model model);
+    @PatchMapping(value = "update")
+    ResponseEntity<UserInfoDto> updateUser(@RequestBody UserInfoDto userInfoDto);
 
-    @PostMapping(value = "update")
-    String updateUser(@ModelAttribute("user") UserInfoDto userInfoDto, @ModelAttribute("role") RoleDto roleDto, @ModelAttribute("permission") PermissionDto permissionDto);
-
-    @GetMapping(value = "delete/{id}")
-    String deleteUser(@PathVariable("id") Long id, Model model);
+    @DeleteMapping(value = "delete/{id}")
+    ResponseEntity deleteUser(@PathVariable("id") Long id);
 
     @GetMapping
-    String getUserList(Model model);
-
+    ResponseEntity<List<UserInfoDto>> getUserList();
 }
