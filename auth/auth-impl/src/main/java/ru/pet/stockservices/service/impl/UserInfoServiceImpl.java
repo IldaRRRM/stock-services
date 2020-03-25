@@ -1,10 +1,11 @@
 package ru.pet.stockservices.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.pet.stockservices.dto.UserInfoDto;
 import ru.pet.stockservices.model.UserInfo;
@@ -15,11 +16,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class UserInfoServiceImpl implements UserDetailsService, UserInfoService {
 
     private final UserInfoRepository userInfoRepository;
     private final ModelMapper mapper;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserInfoServiceImpl(UserInfoRepository userInfoRepository, ModelMapper mapper, @Lazy PasswordEncoder passwordEncoder) {
+        this.userInfoRepository = userInfoRepository;
+        this.mapper = mapper;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -28,6 +35,7 @@ public class UserInfoServiceImpl implements UserDetailsService, UserInfoService 
 
     @Override
     public UserInfoDto create(UserInfoDto userInfoDto) {
+        userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
         UserInfo savedUser = userInfoRepository.save(mapper.map(userInfoDto, UserInfo.class));
         return mapper.map(savedUser, UserInfoDto.class);
     }
