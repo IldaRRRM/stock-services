@@ -34,7 +34,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(targetEntity = Permission.class, fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToMany(targetEntity = Permission.class, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "role_permission", schema = "auth",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
