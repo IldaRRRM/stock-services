@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    continue-on-error: true
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+  liquibase:
+    change-log: classpath:master.xml
+    enabled: false
