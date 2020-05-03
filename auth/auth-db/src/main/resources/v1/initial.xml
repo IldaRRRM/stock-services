@@ -37,6 +37,10 @@
             <column remarks="Дата последнего входа пользователя" name="last_login" type="TIMESTAMP WITHOUT TIME ZONE">
                 <constraints nullable="true"/>
             </column>
+            <column remarks="Баланс" name="balance" type="NUMERIC" defaultValue="0">
+                <constraints nullable="true"/>
+            </column>
+
         </createTable>
 
         <createIndex tableName="user_info" indexName="user_info_username_idx" schemaName="auth">

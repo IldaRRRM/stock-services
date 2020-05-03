@@ -10,6 +10,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>auth</module>
+        <module>achive</module>
     </modules>
     <packaging>pom</packaging>
 

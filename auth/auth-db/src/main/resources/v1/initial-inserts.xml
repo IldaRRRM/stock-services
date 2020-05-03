@@ -16,7 +16,7 @@
 
             INSERT INTO auth.user_info(id, username, password, enabled,
             account_non_expired, credentials_non_expired,
-            account_non_locked) VALUES (1L, 'testUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46',
+            account_non_locked) VALUES (1, 'testUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46',
             true, true, true, true);
 
             INSERT INTO auth.user_info_role(user_info_id, role_id) VALUES (1, 1);
@@ -25,7 +25,8 @@
 
             INSERT INTO auth.user_info(id, username, password, enabled,
             account_non_expired, credentials_non_expired,
-            account_non_locked) VALUES (2L, 'secondUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46', true, true, true, true);
+            account_non_locked) VALUES (2, 'secondUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46',
+            true, true, true, true);
 
             INSERT INTO auth.user_info_role(user_info_id, role_id) VALUES (2, 2);
 

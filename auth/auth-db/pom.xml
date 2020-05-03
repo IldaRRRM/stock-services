@@ -16,14 +16,13 @@
         <liquibase.host>localhost</liquibase.host>
         <liquibase.port>5432</liquibase.port>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <postgresql.version>42.2.9</postgresql.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-            <version>${h2.version}</version>
         </dependency>
 
         <dependency>
@@ -50,7 +49,6 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>

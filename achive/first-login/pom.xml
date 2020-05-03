@@ -3,46 +3,34 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>auth</artifactId>
+        <artifactId>achive</artifactId>
         <groupId>ru.pet.stockservices</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>auth-impl</artifactId>
+    <artifactId>first-login</artifactId>
 
     <properties>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <vue.version>2.5.16</vue.version>
-        <spring-integration-kafka.version>3.2.1.RELEASE</spring-integration-kafka.version>
-        <kafka.version>1.13.0</kafka.version>
-        <db-util.version>1.0.4</db-util.version>
+        <postgresql.version>42.2.12</postgresql.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>ru.pet.stockservices</groupId>
-            <artifactId>auth-db</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.pet.stockservices</groupId>
-            <artifactId>auth-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${modelmapper.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
+        <!--SPRING INTEGRATION-->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-kafka</artifactId>
@@ -70,11 +58,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>vue</artifactId>
-            <version>${vue.version}</version>
-        </dependency>
         <!--TEST-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -93,10 +76,6 @@
             <version>${spring-boot-dependencies.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
 </project>
