@@ -29,3 +29,17 @@ logging:
         type: trace
       springframework:
         security: DEBUG
+  file: demo.log
+application:
+  healthchek:
+    url: ${HEALTH_CHECK_URL:http://localhost:9191/auth/admin/login}
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    logfile:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
