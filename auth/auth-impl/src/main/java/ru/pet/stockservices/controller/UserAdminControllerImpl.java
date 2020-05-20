@@ -39,4 +39,9 @@ public class UserAdminControllerImpl implements UserAdminController {
     public ResponseEntity<List<UserInfoDto>> getUserList() {
         return ResponseEntity.ok(userInfoService.findAll());
     }
+
+    @Override
+    public ResponseEntity<UserInfoDto> findUserByUsername(String username) {
+        return ResponseEntity.ok(userInfoService.findUserInfoByUsername(username));
+    }
 }

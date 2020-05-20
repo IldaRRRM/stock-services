@@ -78,7 +78,7 @@ public class UserInfoServiceImpl implements UserDetailsService, UserInfoService 
     }
 
     @Override
-    public UserInfo findUserInfoByUsername(String username) {
-        return userInfoRepository.findUserInfoByUsernameIgnoreCase(username).orElseThrow();
+    public UserInfoDto findUserInfoByUsername(String username) {
+        return mapper.map(userInfoRepository.findUserInfoByUsernameIgnoreCase(username).orElseThrow(), UserInfoDto.class);
     }
 }

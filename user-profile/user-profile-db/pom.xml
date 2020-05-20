@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>user-profile</artifactId>
+        <groupId>ru.pet.stockservices</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>user-profile-db</artifactId>
+
+    <properties>
+        <h2.version>1.4.200</h2.version>
+        <liquibase.host>localhost</liquibase.host>
+        <liquibase.port>5432</liquibase.port>
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <postgresql.version>42.2.9</postgresql.version>
+    </properties>
+
+</project>

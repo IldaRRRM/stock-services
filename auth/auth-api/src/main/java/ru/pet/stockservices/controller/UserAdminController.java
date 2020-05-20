@@ -27,6 +27,9 @@ public interface UserAdminController {
     @DeleteMapping(value = "delete/{id}")
     ResponseEntity deleteUser(@PathVariable("id") Long id);
 
+    @GetMapping(value = "find/{username}")
+    ResponseEntity<UserInfoDto> findUserByUsername(@PathVariable("username") String username);
+
     @GetMapping
     ResponseEntity<List<UserInfoDto>> getUserList();
 }

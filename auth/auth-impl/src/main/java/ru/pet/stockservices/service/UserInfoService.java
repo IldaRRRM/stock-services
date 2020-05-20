@@ -27,6 +27,6 @@ public interface UserInfoService {
     UserInfoDto findUserInfoById(Long userInfoId);
 
     @PreAuthorize("hasAnyAuthority('read', 'write')")
-    UserInfo findUserInfoByUsername(String username);
+    UserInfoDto findUserInfoByUsername(String username);
 
 }
