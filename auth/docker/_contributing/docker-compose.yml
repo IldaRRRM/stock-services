@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  auth-impl:
+    build:
+      context: auth-impl/
+      dockerfile: Dockerfile
+    ports:
+      - "9191:9191"
+    depends_on:
+      - src
+      - postgres
+    volumes:
+      - impl_target:/app/auth/auth-impl/target
+    network_mode: host
+  src:
+    build:
+      context: ../../../
+      dockerfile: Dockerfile
+    volumes:
+      - impl_target:/app/auth/auth-impl/target
+volumes:
+  impl_target:
