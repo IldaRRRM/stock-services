@@ -11,5 +11,22 @@
 
     <artifactId>hardware-db</artifactId>
 
+    <properties>
+        <h2.version>1.4.200</h2.version>
+        <liquibase.host>localhost</liquibase.host>
+        <liquibase.port>5432</liquibase.port>
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <postgresql.version>42.2.9</postgresql.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

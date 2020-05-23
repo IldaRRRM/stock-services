@@ -1,6 +1,7 @@
 package ru.pet.stockservice.service;
 
-import dto.UserProfileDto;
+
+import ru.pet.stockservice.dto.UserProfileDto;
 
 public interface UserProfileService {
 

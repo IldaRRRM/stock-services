@@ -11,7 +11,7 @@ spring:
       ddl-auto: none
     show-sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=auth
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=profile
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
