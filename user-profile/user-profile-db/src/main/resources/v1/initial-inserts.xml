@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="20201403_initial_inserts" author="imursalimov">
+        <sql>
+
+            INSERT INTO auth.role(id, name) VALUES(1, 'admin');
+            INSERT INTO auth.role(id, name) VALUES(2, 'user');
+
+            INSERT INTO auth.permission(id, permission) VALUES(1, 'write');
+            INSERT INTO auth.permission(id, permission) VALUES(2, 'read');
+
+
+            INSERT INTO auth.user_info(id, username, password, enabled,
+            account_non_expired, credentials_non_expired,
+            account_non_locked) VALUES (1, 'testUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46',
+            true, true, true, true);
+
+            INSERT INTO auth.user_info_role(user_info_id, role_id) VALUES (1, 1);
+
+            INSERT INTO auth.role_permission(role_id, permission_id) VALUES (1, 1);
+
+            INSERT INTO auth.user_info(id, username, password, enabled,
+            account_non_expired, credentials_non_expired,
+            account_non_locked) VALUES (2, 'secondUser', '$2a$10$zRWxyl.GoR84Id9NCGhuxuA/3t3mBzGAwBPCa4XavKVSLEIXCcp46',
+            true, true, true, true);
+
+            INSERT INTO auth.user_info_role(user_info_id, role_id) VALUES (2, 2);
+
+            INSERT INTO auth.role_permission(role_id, permission_id) VALUES (2, 2);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

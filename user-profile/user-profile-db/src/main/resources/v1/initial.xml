@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="20201003_create_schema" author="imursalimov">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS profile
+        </sql>
+    </changeSet>
+
+    <changeSet id="20202205_create_profile_tables" author="imursalimov">
+        <createTable remarks="Профайл пользователя" tableName="user_profile" schemaName="profile">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_user_profile"/>
+            </column>
+            <column remarks="Имя пользователя" name="username" type="VARCHAR(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column remarks="Бюджет пользователя" name="budget" type="NUMERIC">
+                <constraints nullable="false"/>
+            </column>
+            <column remarks="Возраст пользователя" name="age" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+
+            <column remarks="id предпочтения пользователей" name="preferences_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+
+        <!--        <createTable remarks="Роли пользователя" tableName="role" schemaName="auth">-->
+        <!--            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">-->
+        <!--                <constraints primaryKey="true" primaryKeyName="pk_role"/>-->
+        <!--            </column>-->
+        <!--            <column remarks="Название роли" name="name" type="VARCHAR(255)">-->
+        <!--                <constraints nullable="false"/>-->
+        <!--            </column>-->
+        <!--        </createTable>-->
+        <!--        <createTable remarks="Полномочия" tableName="permission" schemaName="auth">-->
+        <!--            <column remarks="Идентификатор" name="id" type="serial" autoIncrement="true">-->
+        <!--                <constraints primaryKey="true" primaryKeyName="pk_permission"/>-->
+        <!--            </column>-->
+        <!--            <column remarks="название полномочий" name="permission" type="VARCHAR(255)">-->
+        <!--                <constraints nullable="false" unique="true"/>-->
+        <!--            </column>-->
+        <!--        </createTable>-->
+
+        <!--        <createTable remarks="Many-to-Many таблица дял ролей пользователей" tableName="user_info_role"-->
+        <!--                     schemaName="auth">-->
+        <!--            <column remarks="id пользователя" name="user_info_id" type="BIGINT">-->
+        <!--                <constraints nullable="false"/>-->
+        <!--            </column>-->
+        <!--            <column remarks="id роли" name="role_id" type="BIGINT">-->
+        <!--                <constraints nullable="false"/>-->
+        <!--            </column>-->
+    </createTable>
+
+    <addPrimaryKey tableName="user_info_role" columnNames="user_info_id, role_id" schemaName="auth"/>
+
+    <addForeignKeyConstraint baseTableName="user_info_role"
+                             baseColumnNames="user_info_id"
+                             baseTableSchemaName="auth"
+                             constraintName="fk_user_role_info_user_id"
+                             referencedTableName="user_info"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="auth"/>
+
+    <addForeignKeyConstraint baseTableName="user_info_role"
+                             baseColumnNames="role_id"
+                             baseTableSchemaName="auth"
+                             constraintName="fk_user_info_role_role_id"
+                             referencedTableName="role"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="auth"/>
+
+    <createTable remarks="Many-to-Many таблица для полномочий ролей пользователя" tableName="role_permission"
+                 schemaName="auth">
+        <column remarks="id роли пользователя" name="role_id" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+        <column remarks="id полномочий" name="permission_id" type="BIGINT">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+
+    <addPrimaryKey tableName="role_permission" columnNames="role_id, permission_id" schemaName="auth"/>
+
+    <addForeignKeyConstraint baseTableName="role_permission"
+                             baseColumnNames="role_id"
+                             baseTableSchemaName="auth"
+                             constraintName="fk_role_permission_role_id"
+                             referencedTableName="role"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="auth"/>
+
+    <addForeignKeyConstraint baseTableName="role_permission"
+                             baseColumnNames="permission_id"
+                             baseTableSchemaName="auth"
+                             constraintName="fk_role_permission_permission_id"
+                             referencedTableName="permission"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="auth"/>
+
+</changeSet>
+        </databaseChangeLog>
