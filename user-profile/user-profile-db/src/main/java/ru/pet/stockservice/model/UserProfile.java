@@ -27,7 +27,7 @@ public class UserProfile {
     @Column(name = "username")
     private String username;
     @Column(name = "balance")
-    private Double balance;
+    private Double balance = 0.0;
     @Column(name = "age")
     private Integer age;
     @ManyToMany(targetEntity = UserPreference.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
