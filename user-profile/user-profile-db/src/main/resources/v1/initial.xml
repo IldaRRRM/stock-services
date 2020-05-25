@@ -19,8 +19,8 @@
             <column remarks="Имя пользователя" name="username" type="VARCHAR(255)">
                 <constraints unique="true" nullable="false"/>
             </column>
-            <column remarks="Бюджет пользователя" name="balance" type="NUMERIC">
-                <constraints nullable="false"/>
+            <column remarks="Бюджет пользователя" name="balance" type="NUMERIC" defaultValue="0">
+                <constraints nullable="true"/>
             </column>
             <column remarks="Возраст пользователя" name="age" type="NUMERIC">
                 <constraints nullable="true"/>
@@ -32,10 +32,10 @@
                 <constraints primaryKey="true" primaryKeyName="pk_preferences"/>
             </column>
             <column remarks="Название предпочтения" name="name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column remarks="Приоритет предпочтнения" name="priority_id" type="BIGINT">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 

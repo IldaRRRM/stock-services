@@ -19,5 +19,4 @@ public class FirstLoginKafkaListener {
         userProfile.setUsername(consumerRecord.value().toString());
         userProfileRepository.save(userProfile);
     }
-
 }
