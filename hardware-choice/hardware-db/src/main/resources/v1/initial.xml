@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Добавить внешние ключи, расставить constraint   -->
+    <changeSet id="20202205_create_profile_schema" author="imursalimov">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS hardware
+        </sql>
+    </changeSet>
+
+    <changeSet id="20202605_hardware_choice" author="imursalimov">
+        <createTable remarks="Фирма оборудования" tableName="company" schemaName="hardware">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_company"/>
+            </column>
+            <column remarks="Название фирмы" name="name" type="VARCHAR(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Видеокарты" tableName="gpu" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_gpu"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Количество гигабайт" name="gb" type="INTEGER">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="потребляемая мощность" name="power_consuming" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+
+        <createTable remarks="Процессоры" tableName="cpu" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cpu"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="частота" name="frequency" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="потребляемая мощность" name="power_consuming" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+
+        <createTable remarks="Оперативная память" tableName="ram" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_ram"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="частота" name="frequency" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="объем" name="gb" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="потребляемая мощность" name="power_consuming" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Блоки питания" tableName="power_supplier" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_power_supplies"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Мощность" name="power" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Жесткие диски" tableName="hdd" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_hdd"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="объем" name="gb" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Твердотельные накопители" tableName="ssd" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_sdd"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="объем" name="gb" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Охлаждение для куллера" tableName="cooling" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cooling"/>
+            </column>
+            <column remarks="id фирмы" name="company_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="модель" name="name" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="цена" name="price" type="NUMERIC">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable remarks="Заказ пользователя" tableName="user_order" schemaName="hardware">
+            <column remarks="идентификатор" name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_user_order"/>
+            </column>
+            <column remarks="логин пользователя" name="username" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id процессора" name="cpu_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id видеокарты" name="gpu_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id оперативной памяти" name="ram_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id системы охлаждения" name="cooling_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id ssd" name="ssd_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id hdd" name="hdd_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="id блока питания" name="power_supplier_id" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

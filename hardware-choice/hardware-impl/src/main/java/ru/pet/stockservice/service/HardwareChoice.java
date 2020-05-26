@@ -1,10 +1,10 @@
 package ru.pet.stockservice.service;
 
-import ru.pet.stockservice.dto.HardwareDto;
+import ru.pet.stockservice.dto.UserOrderDto;
 import ru.pet.stockservice.dto.UserProfileDto;
 
 public interface HardwareChoice {
 
-    HardwareDto pickHardware(UserProfileDto userProfileDto);
+    UserOrderDto pickHardware(UserProfileDto userProfileDto);
 
 }

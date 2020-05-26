@@ -19,6 +19,11 @@ public class UserProfileControllerImpl implements UserProfileController {
 
     @Override
     public ResponseEntity<UserProfileDto> createUserProfileByUsername(String username) {
-        return ResponseEntity.ok(userProfileService.createUserProfile(username));
+        return ResponseEntity.ok(userProfileService.fillUserProfile(username));
+    }
+
+    @Override
+    public ResponseEntity<UserProfileDto> fillUserProfile(UserProfileDto userProfileDto) {
+        return ResponseEntity.ok(userProfileService.fillUserProfile(userProfileDto));
     }
 }

@@ -30,6 +30,8 @@ public class UserProfile {
     private Double balance = 0.0;
     @Column(name = "age")
     private Integer age;
+    @Column(name = "purchase_budget")
+    private Double purchaseBudget;
     @ManyToMany(targetEntity = UserPreference.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_preferences", schema = "profile",
             joinColumns = @JoinColumn(name = "user_profile_id"),

@@ -1,7 +1,7 @@
 package ru.pet.stockservice.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,20 +12,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Data
-@EqualsAndHashCode(of = {"id"})
-@Table(name = "preferences", schema = "profile")
-public class UserPreference {
+@Getter
+@Setter
+public class PcGear {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "name")
-    private String name;
+    protected Long id;
+    @Column(name = "price")
+    protected Double price;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "priority_id")
-    private PriorityPreference priority;
-
+    @JoinColumn(name = "company_id")
+    protected Company company;
+    @Column(name = "name")
+    protected String name;
 }

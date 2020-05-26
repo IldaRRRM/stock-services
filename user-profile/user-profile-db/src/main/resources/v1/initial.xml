@@ -19,7 +19,10 @@
             <column remarks="Имя пользователя" name="username" type="VARCHAR(255)">
                 <constraints unique="true" nullable="false"/>
             </column>
-            <column remarks="Бюджет пользователя" name="balance" type="NUMERIC" defaultValue="0">
+            <column remarks="Баланс пользователя" name="balance" type="NUMERIC" defaultValue="0">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Бюджет пользователя на сборку пк" name="purchase_budget" type="NUMERIC" defaultValue="0">
                 <constraints nullable="true"/>
             </column>
             <column remarks="Возраст пользователя" name="age" type="NUMERIC">

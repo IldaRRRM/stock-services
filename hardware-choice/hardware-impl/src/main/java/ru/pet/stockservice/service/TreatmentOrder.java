@@ -1,9 +1,9 @@
 package ru.pet.stockservice.service;
 
-import ru.pet.stockservice.dto.HardwareDto;
+import ru.pet.stockservice.dto.UserOrderDto;
 
 public interface TreatmentOrder {
 
-    public HardwareDto treatmentOrder(String username);
+    public UserOrderDto treatmentOrder(String username);
 
 }
