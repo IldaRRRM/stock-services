@@ -16,4 +16,9 @@ public class UserProfileControllerImpl implements UserProfileController {
     public ResponseEntity<UserProfileDto> findUserProfile(String username) {
         return ResponseEntity.ok(userProfileService.findUserProfile(username));
     }
+
+    @Override
+    public ResponseEntity<UserProfileDto> createUserProfileByUsername(String username) {
+        return ResponseEntity.ok(userProfileService.createUserProfile(username));
+    }
 }

@@ -1,4 +1,4 @@
-package ru.pet.stockservices.exception;
+package ru.pet.stockservices.exception.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

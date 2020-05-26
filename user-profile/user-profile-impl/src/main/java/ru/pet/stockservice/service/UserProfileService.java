@@ -7,4 +7,6 @@ public interface UserProfileService {
 
     UserProfileDto findUserProfile(String username);
 
+    UserProfileDto createUserProfile(String username);
+
 }
