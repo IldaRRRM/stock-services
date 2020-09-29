@@ -7,8 +7,17 @@ spring:
   liquibase:
     change-log: classpath:master.xml
     enabled: true
+  kafka:
+    producer:
+      bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
   jpa:
     generate-ddl: false
     hibernate:
       ddl-auto: none
     show-sql: true
+application:
+  healthchek:
+    url: ${HEALTH_CHECK_URL:http://localhost:9191/auth/admin/login}

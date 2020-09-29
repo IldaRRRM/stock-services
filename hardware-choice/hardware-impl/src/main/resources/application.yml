@@ -1,0 +1,24 @@
+server:
+  port: 9194
+spring:
+  liquibase:
+    change-log: classpath:master.xml
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=hardware
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+feign:
+  hystrix:
+    enabled: true
+app:
+  balance:
+    high-priority-multiplier:
+      gpu: 0.5
+      cpu: 0.5
+      ram: 0.12
+    default-multiplier:
+      gpu: 0.3
+      cpu: 0.3
+      ram: 0.2

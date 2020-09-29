@@ -11,6 +11,8 @@
     <modules>
         <module>auth</module>
         <module>achive</module>
+        <module>user-profile</module>
+        <module>hardware-choice</module>
     </modules>
     <packaging>pom</packaging>
 

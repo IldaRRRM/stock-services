@@ -18,6 +18,6 @@ public class UserInfoServiceJdbc implements UserInfoService {
     public void addBonusToUser(String username) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("username", username);
-        jdbc.update("UPDATE user_info SET balance = balance + 500 WHERE upper(username) = upper(:username)", paramMap);
+        jdbc.update("UPDATE user_profile SET balance = balance + 500 WHERE upper(username) = upper(:username)", paramMap);
     }
 }

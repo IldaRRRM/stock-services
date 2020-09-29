@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="20202605_initial_inserts" author="imursalimov">
+        <sql>
+
+            INSERT INTO profile.priority(priority) VALUES('high');
+            INSERT INTO profile.priority(priority) VALUES('medium');
+            INSERT INTO profile.priority(priority) VALUES('low');
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -17,6 +17,7 @@
         <spring-integration-kafka.version>3.2.1.RELEASE</spring-integration-kafka.version>
         <kafka.version>1.13.0</kafka.version>
         <db-util.version>1.0.4</db-util.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencies>
@@ -28,6 +29,11 @@
         <dependency>
             <groupId>ru.pet.stockservices</groupId>
             <artifactId>auth-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.pet.stockservices</groupId>
+            <artifactId>user-profile-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -86,6 +92,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import ru.pet.stockservice.client.UserProfileControllerFeign;
 import ru.pet.stockservices.config.kafka.KafkaGateway;
 import ru.pet.stockservices.model.UserInfo;
 import ru.pet.stockservices.repository.UserInfoRepository;
@@ -21,6 +22,7 @@ public class LoginSuccessHandler implements ApplicationListener<AuthenticationSu
 
     private final UserInfoRepository userInfoRepository;
     private final KafkaGateway kafkaGateway;
+    private final UserProfileControllerFeign userProfileControllerFeign;
 
     @Override
     public void onApplicationEvent(AuthenticationSuccessEvent authenticationSuccessEvent) {
@@ -28,7 +30,9 @@ public class LoginSuccessHandler implements ApplicationListener<AuthenticationSu
         if (authentication.getPrincipal() instanceof UserInfo) {
             UserInfo userInfo = (UserInfo) authentication.getPrincipal();
             if (userInfo.getLastLogin() == null) {
-                kafkaGateway.sendToKafka(userInfo.getUsername(), USER_TOPIC);
+                String username = userInfo.getUsername();
+                userProfileControllerFeign.createUserProfileByUsername(username);
+                kafkaGateway.sendToKafka(username, USER_TOPIC);
             }
             userInfo.setLastLogin(LocalDateTime.now());
             userInfoRepository.save(userInfo);

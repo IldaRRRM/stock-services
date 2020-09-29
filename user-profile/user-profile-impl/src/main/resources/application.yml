@@ -1,0 +1,18 @@
+server:
+  port: 9193
+spring:
+  liquibase:
+    change-log: classpath:master.xml
+    enabled: true
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=profile
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
