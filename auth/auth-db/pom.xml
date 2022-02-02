@@ -16,7 +16,7 @@
         <liquibase.host>localhost</liquibase.host>
         <liquibase.port>5432</liquibase.port>
         <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
-        <postgresql.version>42.2.9</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
     </properties>
 
     <dependencies>
