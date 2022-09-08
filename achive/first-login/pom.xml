@@ -13,7 +13,7 @@
 
     <properties>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <postgresql.version>42.2.12</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
     </properties>
 
     <dependencies>
